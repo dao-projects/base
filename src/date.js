@@ -41,6 +41,7 @@ export const date = {
             end: fmt ? date.formatTime(t, fmt) : t,
         }));
     },
-    compareDate: (s1, s2) => ((new Date(s1.replace(/-/g, "\/"))) > (new Date(s2.replace(/-/g, "\/"))))
+    compareDate: (s1, s2) => ((new Date(s1.replace(/-/g, "\/"))) > (new Date(s2.replace(/-/g, "\/")))),
+    maxExpireDate: ()=> new Date('Fri, 31 Dec 9999 23:59:59 UTC')
 }
 export default date

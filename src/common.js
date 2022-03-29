@@ -7,6 +7,22 @@ export function deepCopyJSON(obj) {
     return JSON.parse(JSON.stringify(obj));
 }
 /**
+ * [serialize 序列化]
+ * @param  {[type]} item [description]
+ * @return {[type]}      [description]
+ */
+export function serialize(item) {
+    return JSON.stringify(item);
+}
+/**
+ * [deserialize 反序列化]
+ * @param  {[type]} data [description]
+ * @return {[type]}      [description]
+ */
+export function deserialize(data) {
+    return data && JSON.parse(data);
+}
+/**
  * 深度复制（采用递归式）
  * @param obj 复制对象
  */
@@ -239,6 +255,17 @@ export function merge(foo, bar) {
         }
     }
     return merged;
+}
+
+/**
+ * extend 合并对象
+ * @param  {[type]} obj   [description]
+ * @param  {[type]} props [description]
+ * @return {[type]}       [description]
+ */
+export function extend (obj, props) {
+    for (var key in props) obj[key] = props[key];
+    return obj;
 }
 /**
  * [extractURL description]

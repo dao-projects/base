@@ -56,6 +56,10 @@ const reg = {
   chinese: /^[\u4E00-\u9FA5]+$/,
   // 正则验证
   regex: function (value, regex) {
-    return regex.test(value);
+    // return regex.test(value);
+    return (this?.[regex] || regex).test(value);
   },
 };
+
+
+export default reg;

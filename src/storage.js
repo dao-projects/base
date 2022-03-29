@@ -24,7 +24,7 @@ export const storage = {
         getUseJSON(key) {
             const value = localStorage.getItem(key);
             if (value) {
-                return JSON.parse(value);
+                return JSON.parse(value) || null;
             } else {
                 return null;
             }
