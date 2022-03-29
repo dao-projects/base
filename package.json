@@ -1,0 +1,26 @@
+{
+  "name": "@daoxin/base",
+  "version": "0.0.2",
+  "description": "基于ES6的工具类函数",
+  "main": "index.js",
+  
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dao-projects/base.git%22.git"
+  },
+  "keywords": [
+    "es6",
+    "js",
+    "utils"
+  ],
+  "author": "daoxin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dao-projects/base.git%22/issues"
+  },
+  "homepage": "https://github.com/dao-projects/base.git%22#readme",
+  "devDependencies": {}
+}
