@@ -26,8 +26,8 @@ const reg = {
   // 姓名
   name: /^[\u4E00-\u9FA5]{2,5}(?:·[\u4E00-\u9FA5]{2,5})*$/,
   //身份证号（18位）
-  idCard:
-    /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/,
+  idCard:/^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/,
+  card:/^\d{6}(18|19|20)?\d{2}(0[1-9]|1[012])(0[1-9]|[12]\d|3[01])\d{3}(\d|x|X)$/,
   // 银行卡
   bankcard: /^(\d{16}|\d{19})$/,
   // url验证
@@ -59,6 +59,21 @@ const reg = {
     // return regex.test(value);
     return (this?.[regex] || regex).test(value);
   },
+  // 18位身份证校验算法
+  isCard18:function(idCard) {
+    var p =
+      /^[1-9]\d{5}(18|19|20)\d{2}((0[1-9])|(1[0-2]))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/;
+    var factor = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2];
+    var parity = [1, 0, "X", 9, 8, 7, 6, 5, 4, 3, 2];
+    var code = idCard.substring(17);
+    if (p.test(idCard)) {
+      var sum = 0;
+      for (var i = 0; i < 17; i++) sum += Number(idCard[i]) * factor[i];
+      if (parity[sum % 11] == code.toUpperCase()) return true;
+      console.log(idCard, parity[sum % 11]);
+    }
+    return false;
+  }
 };
 
 

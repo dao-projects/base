@@ -36,6 +36,9 @@ common.compareVersion("1.0.1", "1.0.3")
 | merge()               | 对象合并               |
 | compareVersion(v1, v2)      | 版本比较  //=> 1,-1,0             |
 | sums(datas, key = 'value')                | 求数组总和             |
+| highlight |文本高亮|
+| distanceTime |距离时间|
+| timeAgo |几年前、几月前、几周、几天前、几小时前、几分钟前、刚刚|
 
 
 ```

@@ -5,6 +5,7 @@ import is from "./src/is.js"
 import date from "./src/date.js"
 import to from "./src/to.js"
 import verify from "./src/verify.js"
+import card from "./src/card.js"
 // 导出
 export {
     common,
@@ -12,5 +13,6 @@ export {
     is,
     date,
     to,
-    verify
+    verify,
+    card
 }
