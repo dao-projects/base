@@ -159,8 +159,8 @@ const cardInfo = (card, isMore = false) => {
         msg: "身份证号不能为空",
     };
     if (!card) return info;
-    card = card ? .toString();
-    card = card ? .replace(/(^\s*)|(\s*$)/g, ""); //去掉字符串头尾空格
+    card = card.toString();
+    card = card.replace(/(^\s*)|(\s*$)/g, ""); //去掉字符串头尾空格
     /*15位转18位*/
     if (card.length == 15) {
         card = card15to18(card);
