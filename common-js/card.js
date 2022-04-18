@@ -1,3 +1,5 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * 身份证校验（身份证号合法性验证/支持15位和18位身份证号/支持地址编码、出生日期、校验位验证）
  * @description
@@ -25,7 +27,7 @@
  *        i 18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1
  *        Wi 7 9 10 5 8 4 2 1 6 3 7 9 10 5 8 4 2 1
  */
-const city = {
+var city = {
     11: "北京",
     12: "天津",
     13: "河北省",
@@ -65,13 +67,16 @@ const city = {
  * 年龄计算
  * @param {String} str 年月日 {yyyy-mm-dd}
  */
-const getAge = (str) => {
-    let age = 0;
+var getAge = function (str) {
+    var age = 0;
     if (str) {
         var r = str.match(/^(\d{1,4})(-|\/)(\d{1,2})\2(\d{1,2})$/);
-        if (r == null) return false;
+        if (r == null)
+            return false;
         var d = new Date(r[1], r[3] - 1, r[4]);
-        if (d.getFullYear() == r[1] && d.getMonth() + 1 == r[3] && d.getDate() == r[4]) {
+        if (d.getFullYear() == r[1] &&
+            d.getMonth() + 1 == r[3] &&
+            d.getDate() == r[4]) {
             var Y = new Date().getFullYear();
             return Y - r[1];
         }
@@ -83,16 +88,15 @@ const getAge = (str) => {
  * @param val 地区码（2位）
  * @returns boolean
  */
-const checkProv = (val) => !!(/^[1-9][0-9]/.test(val) && city[val]);
+var checkProv = function (val) { return !!(/^[1-9][0-9]/.test(val) && city[val]); };
 /**
  * 15位身份证转18位
  * @param idCard 15位身份证
  */
-const card15to18 = (idCard) => {
+var card15to18 = function (idCard) {
     var arrInt = new Array(7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2);
     var arrCh = new Array("1", "0", "X", "9", "8", "7", "6", "5", "4", "3", "2");
-    var cardTemp = 0,
-        i;
+    var cardTemp = 0, i;
     idCard = idCard.substr(0, 6) + "19" + idCard.substr(6, idCard.length - 6);
     for (i = 0; i < 17; i++) {
         cardTemp += idCard.substr(i, 1) * arrInt[i];
@@ -105,15 +109,17 @@ const card15to18 = (idCard) => {
  * @param {*} idCard 18位身份证
  * @returns
  */
-const isCard18 = (idCard) => {
+var isCard18 = function (idCard) {
     var p = /^[1-9]\d{5}(18|19|20)\d{2}((0[1-9])|(1[0-2]))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/;
     var factor = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2];
     var parity = [1, 0, "X", 9, 8, 7, 6, 5, 4, 3, 2];
     var code = idCard.substring(17);
     if (p.test(idCard)) {
         var sum = 0;
-        for (var i = 0; i < 17; i++) sum += Number(idCard[i]) * factor[i];
-        if (parity[sum % 11] == code.toUpperCase()) return true;
+        for (var i = 0; i < 17; i++)
+            sum += Number(idCard[i]) * factor[i];
+        if (parity[sum % 11] == code.toUpperCase())
+            return true;
         console.log(idCard, parity[sum % 11]);
     }
     return false;
@@ -123,14 +129,17 @@ const isCard18 = (idCard) => {
  * @param {*} val 年月日 {yyyymmdd}
  * @returns
  */
-const checkDate = (val) => {
+var checkDate = function (val) {
     var pattern = /^(18|19|20)\d{2}((0[1-9])|(1[0-2]))(([0-2][1-9])|10|20|30|31)$/;
     if (pattern.test(val)) {
         var year = val.substring(0, 4);
         var month = val.substring(4, 6);
         var date = val.substring(6, 8);
         var date2 = new Date(year + "-" + month + "-" + date);
-        if (date2 && date2.getFullYear() == parseInt(year) && date2.getMonth() == parseInt(month) - 1 && date2.getDate() == parseInt(date)) {
+        if (date2 &&
+            date2.getFullYear() == parseInt(year) &&
+            date2.getMonth() == parseInt(month) - 1 &&
+            date2.getDate() == parseInt(date)) {
             return true;
         }
     }
@@ -139,7 +148,7 @@ const checkDate = (val) => {
 /**
  * 根据生日的月份和日期，计算星座
  */
-const getConstellation = (month, day) => {
+var getConstellation = function (month, day) {
     //return "魔羯水瓶双鱼牡羊金牛双子巨蟹狮子处女天秤天蝎射手魔羯".substr(m*2-(d<"102223444433".charAt(m-1)- -19)*2,2)
     //return m-(d<"102223444433".charAt(m-1)- -19);  //输出0～12的数字，0表示摩羯，1表示水瓶，依此类推，...，11是射手，12是摩羯
     var s = "魔羯水瓶双鱼牡羊金牛双子巨蟹狮子处女天秤天蝎射手魔羯";
@@ -149,16 +158,31 @@ const getConstellation = (month, day) => {
 /**
  * 根据出生年计算生肖
  */
-const getZodiac = (year) => {
-    return ["鼠", "牛", "虎", "兔", "龙", "蛇", "马", "羊", "猴", "鸡", "狗", "猪", ][(year - 4) % 12];
+var getZodiac = function (year) {
+    return [
+        "鼠",
+        "牛",
+        "虎",
+        "兔",
+        "龙",
+        "蛇",
+        "马",
+        "羊",
+        "猴",
+        "鸡",
+        "狗",
+        "猪",
+    ][(year - 4) % 12];
 };
 // 身份证验证信息
-const cardInfo = (card, isMore = false) => {
-    const info = {
+var cardInfo = function (card, isMore) {
+    if (isMore === void 0) { isMore = false; }
+    var info = {
         pass: false,
         msg: "身份证号不能为空",
     };
-    if (!card) return info;
+    if (!card)
+        return info;
     card = card.toString();
     card = card.replace(/(^\s*)|(\s*$)/g, ""); //去掉字符串头尾空格
     /*15位转18位*/
@@ -181,22 +205,22 @@ const cardInfo = (card, isMore = false) => {
         return info;
     }
     // 身份证类型
-    const len = card.length === 15 ? 0 : 2; // 15或18
+    var len = card.length === 15 ? 0 : 2; // 15或18
     //年份
-    const y = card.substring(6, 8 + len);
+    var y = card.substring(6, 8 + len);
     //月份
-    const m = card.substring(8 + len, 10 + len);
+    var m = card.substring(8 + len, 10 + len);
     //日
-    const d = card.substring(10 + len, 12 + len);
+    var d = card.substring(10 + len, 12 + len);
     // 验证通过
     info.pass = true;
     // 信息
     info.msg = "身份证号码校验通过";
     // 生日
-    info.birthday = `${y}-${m}-${d}`;
+    info.birthday = y + "-" + m + "-" + d;
     info.age = getAge(info.birthday);
     //性别
-    const gender = Number(card.substring(14, 15 + len)) % 2 === 0 ? 1 : 2;
+    var gender = Number(card.substring(14, 15 + len)) % 2 === 0 ? 1 : 2;
     info.gender = gender;
     info.sex = gender === 1 ? "女" : "男";
     info.province = city[card.slice(0, 2)] || "_";
@@ -206,4 +230,4 @@ const cardInfo = (card, isMore = false) => {
     }
     return info;
 };
-export default cardInfo;
+exports.default = cardInfo;
