@@ -5,4 +5,5 @@ import date from "./date";
 import to from "./to";
 import verify from "./verify";
 import card from "./card";
-export { common, storage, is, date, to, verify, card };
+import queue from "./queue";
+export { common, storage, is, date, to, verify, card, queue };

@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.card = exports.verify = exports.to = exports.date = exports.is = exports.storage = exports.common = void 0;
+exports.queue = exports.card = exports.verify = exports.to = exports.date = exports.is = exports.storage = exports.common = void 0;
 // 导入
 var common = require("./common");
 exports.common = common;
@@ -16,3 +16,5 @@ var verify_1 = require("./verify");
 exports.verify = verify_1.default;
 var card_1 = require("./card");
 exports.card = card_1.default;
+var queue_1 = require("./queue");
+exports.queue = queue_1.default;

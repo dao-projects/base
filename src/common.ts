@@ -650,3 +650,19 @@ export function trim(str) {
         return str.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, "");
     }
 }
+
+/**
+ * [keys description]
+ * @param {[type]} arr [description]
+ * @example
+ *     keysOf({a:1,b:2}) => ['a','b']
+ */
+export const keysOf = <T>(arr: T) => Object.keys(arr) as Array<keyof T>
+
+/**
+ * [entries description]
+ * @param {[type]} arr [description]
+ * @example
+ *       entriesOf({a:1,b:2}) => [['a',1],['b',2]] 
+ */
+export const entriesOf = <T>(arr: T) => Object.entries(arr) as Entries<T>
