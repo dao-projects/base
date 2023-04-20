@@ -7,7 +7,7 @@ exports.is = void 0;
  */
 var call = function (val) { return Object.prototype.toString.call(val); };
 exports.is = {
-    type: function (val, str) { return call(val) === "[object " + (str || "Object") + "]"; },
+    type: function (val, str) { return call(val) === "[object ".concat(str || "Object", "]"); },
     array: function (arr) { return call(arr) === "[object Array]"; },
     object: function (obj) { return obj != null && call(obj) === "[object Object]"; },
     number: function (num) { return call(num) === "[object Number]"; },

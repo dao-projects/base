@@ -6,4 +6,5 @@ import to from "./to";
 import verify from "./verify";
 import card from "./card";
 import queue from "./queue";
-export { common, storage, is, date, to, verify, card, queue };
+import dom from "./dom";
+export { common, storage, is, date, to, verify, card, queue, dom };

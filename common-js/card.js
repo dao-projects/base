@@ -217,7 +217,7 @@ var cardInfo = function (card, isMore) {
     // 信息
     info.msg = "身份证号码校验通过";
     // 生日
-    info.birthday = y + "-" + m + "-" + d;
+    info.birthday = "".concat(y, "-").concat(m, "-").concat(d);
     info.age = getAge(info.birthday);
     //性别
     var gender = Number(card.substring(14, 15 + len)) % 2 === 0 ? 1 : 2;
