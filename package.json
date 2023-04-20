@@ -1,6 +1,6 @@
 {
     "name": "@daoxin/base",
-    "version": "0.0.7",
+    "version": "0.0.8",
     "description": "基于ES6的工具类函数",
     "module": "common-js/index.js",
     "main": "lib/index.js",
