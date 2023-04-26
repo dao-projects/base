@@ -35,6 +35,10 @@ export declare const replace: (ele: Element, newEle: Element) => Element | null;
  */
 export declare const serialize: (formEle: any) => any;
 /**
+ * 将JSON 转 fromData
+ */
+export declare const fromData: <T extends object>(obj: T) => any;
+/**
  * 从字符串中移除所有的 HTML 标签
  * @param {String} html html标签内容
  * @returns  {String} 文本

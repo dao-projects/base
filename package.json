@@ -1,6 +1,6 @@
 {
     "name": "@daoxin/base",
-    "version": "0.0.8",
+    "version": "0.0.9",
     "description": "基于ES6的工具类函数",
     "module": "common-js/index.js",
     "main": "lib/index.js",
@@ -22,6 +22,5 @@
     "bugs": {
         "url": "https://github.com/dao-projects/base.git%22/issues"
     },
-    "homepage": "https://github.com/dao-projects/base.git%22#readme",
-    "devDependencies": {}
+    "homepage": "https://github.com/dao-projects/base.git%22#readme"
 }

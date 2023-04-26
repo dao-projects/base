@@ -12,5 +12,10 @@ export declare const is: {
     positive: (val: any) => boolean;
     negative: (val: any) => boolean;
     even: (val: any) => boolean;
+    isJsonString: (str: any) => boolean;
+    isNumber: (val: any) => boolean;
+    isDate: (val: any) => boolean;
+    getType: (val: any) => any;
+    parseString: (str: any) => any;
 };
 export default is;

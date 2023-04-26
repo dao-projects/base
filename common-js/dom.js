@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.dom = exports.stripHtml = exports.serialize = exports.replace = exports.insertAfter = exports.getPosition = exports.siblings = exports.isAtBottom = exports.touchSupported = void 0;
+exports.dom = exports.stripHtml = exports.fromData = exports.serialize = exports.replace = exports.insertAfter = exports.getPosition = exports.siblings = exports.isAtBottom = exports.touchSupported = void 0;
 /**
  * 检查当前环境是否支持触摸事件
  * @description
@@ -39,12 +39,17 @@ exports.replace = replace;
 /**
  * 将表单数据序列化为 JS 对象
  */
-var serialize = function (formEle) { return Array.from(new FormData(formEle)).reduce(function (p, _a) {
+var serialize = function (formEle) { return Array === null || Array === void 0 ? void 0 : Array.from(new FormData(formEle)).reduce(function (p, _a) {
     var _b;
     var k = _a[0], v = _a[1];
-    return Object.assign({}, p, (_b = {}, _b[k] = p[k] ? (Array.isArray(p[k]) ? p[k] : [p[k]]).concat(v) : v, _b));
+    return Object === null || Object === void 0 ? void 0 : Object.assign({}, p, (_b = {}, _b[k] = p[k] ? (Array.isArray(p[k]) ? p[k] : [p[k]]).concat(v) : v, _b));
 }, {}); };
 exports.serialize = serialize;
+/**
+ * 将JSON 转 fromData
+ */
+var fromData = function (obj) { return Object.keys(obj).reduce(function (p, c) { return !p.append(c, obj[c]) && p; }, new FormData()); };
+exports.fromData = fromData;
 /**
  * 从字符串中移除所有的 HTML 标签
  * @param {String} html html标签内容

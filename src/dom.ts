@@ -40,7 +40,12 @@ export const replace = (ele: Element, newEle: Element): Element | null => (ele.p
 /**
  * 将表单数据序列化为 JS 对象
  */
-export const serialize = (formEle) => Array.from(new FormData(formEle)).reduce((p, [k, v]) => Object.assign({}, p, { [k]: p[k] ? (Array.isArray(p[k]) ? p[k] : [p[k]]).concat(v) : v }), {});
+export const serialize = (formEle) => Array?.from(new FormData(formEle)).reduce((p, [k, v]) => Object?.assign({}, p, { [k]: p[k] ? (Array.isArray(p[k]) ? p[k] : [p[k]]).concat(v) : v }), {});
+
+/**
+ * 将JSON 转 fromData
+ */
+export const fromData = <T extends object>(obj:T) => Object.keys(obj).reduce((p: any, c) => !p.append(c, obj[c]) && p, new FormData())
 
 /**
  * 从字符串中移除所有的 HTML 标签

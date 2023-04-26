@@ -732,5 +732,5 @@ exports.keysOf = keysOf;
  * @example
  *       entriesOf({a:1,b:2}) => [['a',1],['b',2]]
  */
-var entriesOf = function (arr) { return Object.entries(arr); };
+var entriesOf = function (arr) { return Object === null || Object === void 0 ? void 0 : Object.entries(arr); };
 exports.entriesOf = entriesOf;

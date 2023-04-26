@@ -408,9 +408,9 @@ export function formatMoney(number, places, symbol, thousand, decimal) {
         i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousand) +
         (places
             ? decimal +
-              Math.abs(number - Number(i) || 0)
-                  .toFixed(places)
-                  .slice(2)
+            Math.abs(number - Number(i) || 0)
+                .toFixed(places)
+                .slice(2)
             : "")
     );
 }
@@ -473,10 +473,10 @@ export function hexToRgb(hex) {
     var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
     return result
         ? {
-              r: parseInt(result[1], 16),
-              g: parseInt(result[2], 16),
-              b: parseInt(result[3], 16),
-          }
+            r: parseInt(result[1], 16),
+            g: parseInt(result[2], 16),
+            b: parseInt(result[3], 16),
+        }
         : null;
 }
 
@@ -657,7 +657,7 @@ export function trim(str) {
  * @example
  *     keysOf({a:1,b:2}) => ['a','b']
  */
-export const keysOf = <T>(arr: T) => Object.keys(arr) as Array<keyof T>
+export const keysOf = <T extends object>(arr: T) => Object.keys(arr) as Array<keyof T>
 
 /**
  * [entries description]
@@ -665,4 +665,4 @@ export const keysOf = <T>(arr: T) => Object.keys(arr) as Array<keyof T>
  * @example
  *       entriesOf({a:1,b:2}) => [['a',1],['b',2]] 
  */
-export const entriesOf = <T>(arr: T) => Object.entries(arr) as Entries<T>
+export const entriesOf = <T extends object>(arr: T) => Object?.entries(arr) as Entries<T>

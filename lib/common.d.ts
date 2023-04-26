@@ -232,11 +232,11 @@ export declare function trim(str: any): any;
  * @example
  *     keysOf({a:1,b:2}) => ['a','b']
  */
-export declare const keysOf: <T>(arr: T) => (keyof T)[];
+export declare const keysOf: <T extends object>(arr: T) => (keyof T)[];
 /**
  * [entries description]
  * @param {[type]} arr [description]
  * @example
  *       entriesOf({a:1,b:2}) => [['a',1],['b',2]]
  */
-export declare const entriesOf: <T>(arr: T) => Entries<T>;
+export declare const entriesOf: <T extends object>(arr: T) => Entries<T>;
