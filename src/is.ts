@@ -16,8 +16,21 @@ export const is = {
   string: (str) => call(str) === "[object String]",
   // 判断一个值是否为布尔值
   boolean: (val) => call(val) === "[object Boolean]",
+  // 判断一个值是否为函数
+  function: (val) => call(val) === "[object Function]",
+  // 判断一个值是否为函数(异步)
+  asyncFunction: (val) => call(val) === "[object AsyncFunction]",
+  // 判断一个值是否为正则表达式
+  regExp: (val) => call(val) === "[object RegExp]",
+  // 判断一个值是否为Map
+  map: (val) => call(val) === "[object Map]",
+  // 判断一个值是否为Set
+  set: (val) => call(val) === "[object Set]",
+  // 判断一个值是否为Promise
+  promise: (val) => call(val) === "[object Promise]",
   // 判断一个值是否为日期对象
   date: (d) => call(d) === "[object Date]",
+  // isDate:(val) => val instanceof Date,
   // 判断一个值是否为空值（包括 undefined、null、空字符串、空数组和空对象）
   empty: (val) => {
     if (is.object(val) || is.array(val)) {
@@ -40,6 +53,14 @@ export const is = {
   negative: (val) => typeof val === "number" && val < 0,
   // 判断一个数值是否为偶数
   even: (val) => typeof val === "number" && val % 2 === 0,
+  // 判断一个数值是否为Symbol
+  isSymbol:(val) => typeof val === 'symbol',
+  // 判断一个数值是否为null或undefined
+  isNullOrUndefined:(val) => {
+    if (val === null) return true
+    if (typeof val === 'undefined') return true
+    return false
+  },
   // json字符串
   isJsonString: (str) => {
     try { JSON.parse(str); return true } catch (error) { return false }

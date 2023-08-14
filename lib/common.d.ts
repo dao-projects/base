@@ -240,3 +240,84 @@ export declare const keysOf: <T extends object>(arr: T) => (keyof T)[];
  *       entriesOf({a:1,b:2}) => [['a',1],['b',2]]
  */
 export declare const entriesOf: <T extends object>(arr: T) => Entries<T>;
+/**
+ * 一维数组转树形结构。
+ *
+ * @param { Array } arr 需要转换的数组
+ * @param { String } key 数组中每个元素的唯一标识属性
+ * @param { String } parentId 数组中每个元素的父级 id 属性
+ * @param { Number | String } rootIdVal 数组中可以作为根节点的父级 id 的值，具有唯一性
+ * @param { Object } res 返回值
+ * @example  // arrayToTree(arr, 'id', 'pid', 0)
+ */
+export declare const arrayToTree: (arr: any, key: any, parentId: any, rootIdVal: any) => any;
+/**
+ * 深度优先遍历（DFS）算法
+ * @param n
+ * @returns
+ * @example dfs([{id: 1,children:[{id:5},{id:6}]},{id: 2},{id: 3}]) =>// [{id: 1,children:[{id:5},{id:6}]},{id: 5},{id: 6},{id: 2},{id: 3}]
+ */
+export declare const dfs: (n: any, key?: string) => any;
+/**
+ * 广度优先遍历（BFS）算法
+ * @param n
+ * @returns
+ * @example bfs([{id: 1,children:[{id:5},{id:6}]},{id: 2},{id: 3}]) =>// [{id: 1,children:[{id:5},{id:6}]},{id: 5},{id: 6},{id: 2},{id: 3}]
+ */
+export declare const bfs: (tree: any, list?: any[]) => any[];
+/**
+ * 扁平数组转树形结构
+ * @param arr 数组
+ * @param pid 根父级id
+ * @param key  父级id名称（key）
+ * @returns
+ * @example  flatToTree([{ id: 1, name: 'A', pid: null },{ id: 2, name: 'B', pid: 1 },{ id: 3, name: 'C', pid: 1 },{ id: 4, name: 'D', pid: 2 },],1,'id','pid') => // [{id: 2, name: 'B', pid: 1,children:[{}]},{id: 3, name: 'C', pid: 1}]
+ */
+export declare const flatToTree: (arr?: any[], pId?: any, key?: string, pKey?: string) => any[];
+/**
+ * 将对象数组转换成对象
+ * @param arr 待处理的数组
+ * @param key 组成对象的键
+ * @param value 组成对象的值
+ * @example
+ *         arrayToObj([{key:'label1',value:1},{key:'label2',value:2}])  => {label1:1,label2:2}
+ *         arrayToObj([{name:'label1',id:1},{name:'label2',id:2}],'name','id')  => {label1:1,label2:2}
+ */
+export declare const arrayToObj: (arr?: any[], key?: string, value?: string) => {};
+/**
+ * 将对象转换成对象数组
+ * @param obj  待处理的对象
+ * @param key 组成对象的键
+ * @param value 组成对象的值
+ * @example
+ *          objToArray({label1:1,label2:2})   => [{key:'label1',value:1},{key:'label2',value:2}]
+ *          objToArray({label1:1,label2:2} ,'name','id')   => [{name:'label1',id:1},{name:'label2',id:2}]
+ */
+export declare const objToArray: (obj?: {}, key?: string, value?: string) => any[];
+/**
+ * 简化 filter 的取值
+ * @param arr 待处理的数组
+ * @param key 匹配 value 的对象的键
+ * @param value 与 需要相等 的value值
+ * @param name  需要获取的对象值
+ * @returns
+ * @example
+ *      filterBy([{id:1,name:'张先生'},{id:2,name:'李先生'}], 'id', 1, 'name')  => 张先生
+ */
+export declare const filterBy: (arr: any[], key: string, value: any, name?: string) => any;
+/**
+ * 数组映射修改
+ * @param arr 数组
+ * @param mapKey 映射关系
+ * @example
+ *      arrayMapKey([{title:'标题一',value:12},{title:'标题二',value:13}],{title:'label'})   => [{label:'标题一',value:12},{label:'标题二',value:13}]
+ */
+export declare const arrayMapKey: (arr?: any[], mapKey?: {}) => any[];
+/**
+ * 列表分组
+ * @param arr  原始数组
+ * @param key 分组字段
+ * @param keyMap 映射值  {title:"label"}
+ * @returns
+ */
+export declare const listGroup: (arr?: any[], key?: string, keyMap?: {}) => any;

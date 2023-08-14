@@ -3,6 +3,6 @@
  * @param { Object= } errorExt - Additional Information you can pass to the err object
  * @return { Promise }
  */
-declare function to(promise: any, errorExt: any): any;
+declare function to(promise: any, errorExt: any, fn: any): any;
 export { to };
 export default to;

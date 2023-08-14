@@ -5,6 +5,12 @@ export declare const is: {
     number: (num: any) => boolean;
     string: (str: any) => boolean;
     boolean: (val: any) => boolean;
+    function: (val: any) => boolean;
+    asyncFunction: (val: any) => boolean;
+    regExp: (val: any) => boolean;
+    map: (val: any) => boolean;
+    set: (val: any) => boolean;
+    promise: (val: any) => boolean;
     date: (d: any) => boolean;
     empty: (val: any) => boolean;
     checkData: (val: any) => boolean;
@@ -12,6 +18,8 @@ export declare const is: {
     positive: (val: any) => boolean;
     negative: (val: any) => boolean;
     even: (val: any) => boolean;
+    isSymbol: (val: any) => boolean;
+    isNullOrUndefined: (val: any) => boolean;
     isJsonString: (str: any) => boolean;
     isNumber: (val: any) => boolean;
     isDate: (val: any) => boolean;
